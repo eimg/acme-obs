@@ -1,0 +1,42 @@
+{
+  "name": "acme-obs",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Standalone read-only observability for the Acme Software Factory",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "bin": {
+    "acme-obs": "./dist/cli.js"
+  },
+  "scripts": {
+    "dev": "ACME_OBS_DEV=1 tsx watch src/cli.ts serve",
+    "start": "node dist/cli.js serve",
+    "typecheck": "tsc --noEmit -p tsconfig.test.json && tsc -p web/tsconfig.json",
+    "test": "node --test --import tsx test/*.test.ts",
+    "build": "tsc && tsc -p web/tsconfig.json && vite build && chmod +x dist/cli.js",
+    "verify": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "acme-identity": "file:../acme-identity",
+    "better-sqlite3": "^12.11.1",
+    "express": "^5.2.1",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.20.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/supertest": "^7.2.0",
+    "@vitejs/plugin-react": "^6.0.4",
+    "supertest": "^7.2.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vite": "^8.1.5"
+  }
+}

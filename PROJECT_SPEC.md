@@ -10,7 +10,7 @@
 
 Build an optional local observability service for the Acme Software Factory. It collects read-only operational observations from independent products and presents a correlated cross-product timeline without becoming a runtime dependency or source of truth.
 
-The MVP proves the mechanism using Helix and Acme Issues. It does not attempt intelligence, learning, or comprehensive suite integration.
+The MVP proves the correlated workflow mechanism using Helix and Acme Issues, with compact operational snapshots from Acme Projects and Prelude. It does not attempt intelligence, learning, or comprehensive suite integration.
 
 ## 2. Primary users and questions
 
@@ -31,6 +31,10 @@ The product must answer:
 
 - One or more Helix instances, each representing a target repository.
 - One Acme Issues instance.
+- One Acme Projects instance.
+- One Prelude instance.
+- At most one configured instance for every non-Helix source kind.
+- Fully configurable source base URLs; known suite ports are defaults, not identities.
 - Source registration through a local configuration file and environment-provided credentials.
 - Independent polling, cursor state, health, and error reporting per registered source.
 
@@ -54,6 +58,8 @@ Collect allowlisted operational facts:
 - deliverable and PR references;
 - PR-review identity, exact revision references, lifecycle status, decision, findings/check summaries, and timestamps;
 - human merge or requested-change state exposed by Acme Issues;
+- Acme Projects card column, comment count, and explicit implementation issue linkage;
+- Prelude inception state/counts and bootstrap-export adoption state;
 - typed correlation references between these objects.
 
 Do not collect raw Pi transcripts, raw prompts, source-code bodies, environment values, tokens, authorization headers, or unrestricted tool output.
@@ -94,7 +100,7 @@ Exact routes may follow the repository's implementation conventions, but UI and 
 
 ### Independence
 
-- Helix and Acme Issues behave identically when `acme-obs` is stopped or absent.
+- Helix, Acme Issues, Acme Projects, and Prelude behave identically when `acme-obs` is stopped or absent.
 - Source transactions never wait for or call `acme-obs`.
 - No source imports an `acme-obs` package.
 - Observation failures never write back to sources.
@@ -118,6 +124,9 @@ Exact routes may follow the repository's implementation conventions, but UI and 
 ### Safety
 
 - Credentials remain server-side.
+- Human API access requires `observability.read`, collection requires `observability.collect`, and rebuild/reset requires `observability.manage` when shared Identity is enabled.
+- Identity failure in `local` mode fails closed; public health remains available.
+- The observer is a privileged suite-wide projection and does not claim row-level source authorization.
 - Payload collection is allowlist-based.
 - Malformed source payloads produce adapter diagnostics and do not enter normalized storage.
 - UI renders observation content as data, never trusted HTML.
@@ -144,8 +153,8 @@ Exact routes may follow the repository's implementation conventions, but UI and 
 - Distributed tracing infrastructure or an OpenTelemetry backend.
 - Metrics infrastructure such as Prometheus or Grafana.
 - Event brokers, queues, or multi-process workers.
-- Authentication/authorization integration beyond safe standalone local operation.
-- Adapters for Prelude, Primer, Projects, Identity, or arbitrary third parties.
+- Row-level or per-source user authorization within the privileged projection.
+- Adapters for Primer, Identity, or arbitrary third parties.
 
 ## 7. Acceptance journeys
 

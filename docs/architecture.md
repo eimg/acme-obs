@@ -3,11 +3,10 @@
 ## Shape
 
 ```text
-Helix HTTP API ----> Helix adapter ----\
-                                      \
-                                       -> collector -> SQLite -> query services -> HTTP API -> React UI
-                                      /
-Issues HTTP API ---> Issues adapter --/
+Helix HTTP APIs -----> Helix adapters ----\
+Issues HTTP API -----> Issues adapter -----+-> collector -> SQLite -> query services -> HTTP API -> React UI
+Projects HTTP API ---> Projects adapter ---+
+Prelude HTTP API ----> Prelude adapter ----/
 ```
 
 The arrows are pull-only. Nothing in a source product points to `acme-obs`.
@@ -19,12 +18,16 @@ The arrows are pull-only. Nothing in a source product points to `acme-obs`.
 Loads non-secret source configuration. A source has:
 
 - stable local source ID;
-- adapter kind (`helix` or `acme-issues`);
+- adapter kind (`helix`, `acme-issues`, `acme-projects`, or `prelude`);
 - base URL;
 - display name;
 - poll interval and enabled flag;
 - optional repository/project metadata;
 - environment-variable name containing a server-side token, if required.
+
+The registry permits multiple `helix` entries, normally one per target repository. Every other source kind is a singleton. Base URLs are complete configured addresses; ports are not embedded in adapter logic and never identify an instance.
+
+The configuration file remains authoritative for this pass. A future settings UI may edit the same non-secret configuration atomically, but it must not move tokens into browser-visible state or make the derived observation database authoritative for configuration.
 
 The browser receives safe source metadata, never credentials.
 
@@ -41,6 +44,8 @@ Each adapter implements the contract in [`event-contract.md`](./event-contract.m
 - source-specific correlation references.
 
 Adapters do not persist data themselves.
+
+Polling is the current acquisition mechanism. The accepted later streaming seam is an optional adapter subscription to a source-owned SSE feed backed by durable cursor history. Reconciliation polling remains required so disconnects cannot create permanent gaps. WebSockets are not part of the current one-way contract.
 
 ### Collector
 
@@ -117,6 +122,10 @@ Application services provide overview, observation search, source diagnostics, m
 
 ## Security boundary
 
+- `ACME_AUTH_MODE=off` preserves standalone development; `local` resolves browser sessions and bearer principals through Acme Identity.
+- Dashboard and trace APIs require `observability.read`; manual collection requires `observability.collect`; rebuild/reset requires `observability.manage`.
+- Identity outages fail closed in `local` mode. Liveness endpoints remain public.
+- The projection is privileged and suite-wide. It does not filter observations by source ACL or actor.
 - Source adapters execute server-side.
 - Configure trusted source origins explicitly.
 - Attach credentials only to the exact configured origin.
@@ -128,4 +137,4 @@ Application services provide overview, observation search, source diagnostics, m
 
 ## Standalone behavior
 
-The observer should start with no configured sources and present setup guidance. Fake fixture adapters must allow a complete demonstration without Helix, Issues, network access, or credentials.
+The observer should start with no configured sources and present setup guidance. Fake fixture adapters must allow a complete demonstration without Helix, Issues, Projects, Prelude, network access, or credentials.

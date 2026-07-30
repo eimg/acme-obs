@@ -8,7 +8,7 @@ export interface Observation {
   id: string;
 
   producer: {
-    product: "helix" | "acme-issues" | string;
+    product: "helix" | "acme-issues" | "acme-projects" | "prelude" | string;
     instanceId: string;
     adapterVersion: string;
   };
@@ -49,6 +49,7 @@ export type JsonValue =
 - Recommended format: `<instance-id>:<native-id>`.
 - For snapshot-derived transitions, hash canonical JSON containing source identity, object identity, transition type, and source `updatedAt` or revision.
 - `observedAt` must never participate in deduplication identity.
+- `producer.instanceId` is the stable configured source ID, never a URL or port. It distinguishes multiple Helix instances; non-Helix kinds are singletons.
 
 ## Reference rules
 
@@ -66,6 +67,10 @@ Initial namespaces:
 | run | `helix.run` | UUID |
 | pull request | `acme-issues.pull-request` | `7` |
 | PR review | `helix.pr-review` | UUID |
+| project | `acme-projects.project` | UUID |
+| project card | `acme-projects.card` | UUID |
+| inception | `prelude.inception` | UUID |
+| bootstrap export | `prelude.bootstrap-export` | UUID |
 | repository | `git.repository` | configured logical ID |
 | commit | `git.commit` | full SHA |
 
@@ -117,6 +122,14 @@ At minimum map source-owned transitions for:
 - issue reopened or completed.
 
 The adapter must inspect and use actual public Issues API contracts. If required historical transitions are not available, propose the smallest optional read-only export endpoint in Acme Issues rather than reading its database.
+
+## Acme Projects mapping
+
+Map each collaboration card as a current-state snapshot with its project, column, comment count, and explicit Acme Issues link when an active implementation exists. Keep the card title for recognition, but exclude description, decisions, open questions, acceptance notes, and comment bodies.
+
+## Prelude mapping
+
+Map inception status and allowlisted operational counts, plus bootstrap-export availability/adoption status. Correlate exports to their inception. Exclude briefs, document bodies, artifact contents, and Primer-derived answers or evidence.
 
 ## Validation and bounds
 

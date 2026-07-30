@@ -1,0 +1,48 @@
+{
+  "sources": [
+    {
+      "id": "fixture-demo",
+      "kind": "fixture",
+      "displayName": "Factory simulation",
+      "enabled": true,
+      "pollIntervalMs": 60000
+    },
+    {
+      "id": "prelude-local",
+      "kind": "prelude",
+      "displayName": "Prelude",
+      "baseUrl": "http://127.0.0.1:8318",
+      "enabled": true,
+      "pollIntervalMs": 5000,
+      "tokenEnv": "ACME_OBS_PRELUDE_TOKEN"
+    },
+    {
+      "id": "issues-local",
+      "kind": "acme-issues",
+      "displayName": "Acme Issues",
+      "baseUrl": "http://127.0.0.1:8320",
+      "enabled": true,
+      "pollIntervalMs": 5000,
+      "tokenEnv": "ACME_OBS_ISSUES_TOKEN"
+    },
+    {
+      "id": "projects-local",
+      "kind": "acme-projects",
+      "displayName": "Acme Projects",
+      "baseUrl": "http://127.0.0.1:8321",
+      "enabled": true,
+      "pollIntervalMs": 5000,
+      "tokenEnv": "ACME_OBS_PROJECTS_TOKEN"
+    },
+    {
+      "id": "helix-local",
+      "kind": "helix",
+      "displayName": "Helix — current target",
+      "baseUrl": "http://127.0.0.1:8319",
+      "repositoryId": "local-target",
+      "enabled": true,
+      "pollIntervalMs": 5000,
+      "tokenEnv": "ACME_OBS_HELIX_TOKEN"
+    }
+  ]
+}

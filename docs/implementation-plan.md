@@ -1,5 +1,7 @@
 # Implementation plan
 
+**Current first-pass status:** Phases 0 and 1 are implemented, including the fixture-first dashboard. External Helix, Acme Issues, Acme Projects, and Prelude adapters are implemented without source-product changes. Acme Identity integration supports standalone `off` mode and shared-session `local` mode with separate read, collect, and manage gates. Configuration permits multiple Helix instances but only one instance of each other source kind; all service addresses are configurable. Snapshot-based adapters describe current source state honestly rather than inventing lifecycle transitions. Cursor-backed SSE and a configuration/settings UI are accepted later directions, not current behavior. The remaining MVP hardening and live acceptance journeys are still open.
+
 Implement in this order. Each phase should leave `npm run verify` passing.
 
 ## Phase 0: repository foundation
@@ -108,7 +110,7 @@ Add:
 - complete configuration and operation docs;
 - browser acceptance runbook.
 
-Run the five acceptance journeys in `PROJECT_SPEC.md` against local Helix and Acme Issues.
+Run the five acceptance journeys in `PROJECT_SPEC.md` against local sources, with Helix and Acme Issues providing the correlated workflow journey.
 
 ## Suggested configuration
 
@@ -150,7 +152,7 @@ Do not put tokens in the JSON file.
 
 ## Implementation cautions
 
-- Do not retrofit every source before the Helix-only slice works.
+- Keep the Helix and Issues workflow slice coherent as additional snapshot sources are added.
 - Do not make source products emit synchronous telemetry calls.
 - Do not introduce a shared package dependency into source repositories.
 - Do not confuse operational correlation with a learning episode.
