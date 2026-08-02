@@ -4,6 +4,8 @@ Acme Observability (`acme-obs`) is an optional, read-only view across the indepe
 
 **Status:** first runnable observability slice. It includes the standalone SQLite projection, an at-a-glance dashboard, a deterministic sample workflow, and read-only adapters for current Helix, Acme Issues, Acme Projects, and Prelude public APIs.
 
+The Acme suite is an executable reference architecture, not an all-inclusive platform or a universal prescription. Its local-first, independently runnable products and replaceable integration seams let subject-matter experts inspect working patterns and adapt the parts that fit their organization.
+
 Read [`PROJECT_SPEC.md`](./PROJECT_SPEC.md) for the accepted MVP, [`docs/decisions.md`](./docs/decisions.md) for settled boundaries, and [`docs/implementation-plan.md`](./docs/implementation-plan.md) for the build sequence.
 
 ## Product boundary

@@ -2,6 +2,8 @@
 
 This repository contains the first runnable slice of the optional Acme cross-product observability service.
 
+Treat the Acme suite as an executable reference architecture, not a universal platform. Preserve Observability's optional local operation, focused ownership, and replaceable read-only seams; add breadth to demonstrate this responsibility, not to anticipate every organization's operations stack.
+
 ## Read first
 
 1. [`PROJECT_SPEC.md`](./PROJECT_SPEC.md)
