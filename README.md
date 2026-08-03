@@ -69,6 +69,8 @@ The fixture tells this story without requiring a real run. Live Helix collection
 
 Acme Projects adds the upstream collaboration-board view, including explicit card-to-issue links when a card has an active implementation. Prelude adds inception and bootstrap-export status. Both adapters intentionally collect compact operational snapshots rather than collaboration prose, briefs, documents, or artifact contents.
 
+Acme Steering is deliberately not a shipped source adapter yet. Steering owns decisions and delegation; Observability must never resolve cases or become an action route. A later read-only adapter may project allowlisted case state and attempt timing when that operational view proves useful.
+
 The current Issues adapter intentionally labels its records as snapshots. The existing API exposes current state and recorded review history, but not a complete cursor-based transition history; the observer does not invent missing transitions. A source-owned read-only export can be added later if real usage proves it necessary.
 
 ## Local defaults

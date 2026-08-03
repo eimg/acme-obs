@@ -17,6 +17,7 @@ These decisions are accepted for the MVP. A future implementation agent should e
 | Writes to sources | Forbidden in the MVP |
 | Intelligence | Deferred entirely |
 | Primer | No MVP integration |
+| Acme Steering | No shipped adapter; a later adapter may project allowlisted operational facts but never provide decision or action authority |
 | Raw logs/transcripts | Not a general log collector; collect allowlisted domain observations only |
 | Deployment | One local Node.js process |
 | Default port | `8322` |
@@ -60,6 +61,7 @@ Do not decide these during the MVP unless a completion criterion requires them:
 - hosted deployment;
 - row-level or per-source user authorization;
 - adapters beyond Helix, Acme Issues, Acme Projects, and Prelude;
+- read-only Acme Steering projection;
 - generalized connector marketplace;
 - source configuration/settings UI;
 - implementation of optional cursor-history and SSE endpoints;

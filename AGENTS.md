@@ -38,6 +38,7 @@ Do not reopen settled product choices unless implementation evidence makes one i
 - Acme Issues owns issues, PR records, review history, and the human merge record.
 - Acme Projects owns exploratory cards, collaboration content, and implementation handoff links.
 - Prelude owns inceptions, working documents, bootstrap exports, and adoption state.
+- Acme Steering owns cases, decisions, delegation policy, escalation, and action-attempt authority. Observability has no current Steering adapter and must remain read-only if one is added.
 - No observation can override or repair source state.
 
 ## Stack and structure

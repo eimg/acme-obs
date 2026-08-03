@@ -149,6 +149,7 @@ Exact routes may follow the repository's implementation conventions, but UI and 
 - Embeddings, semantic search, or an LLM dependency.
 - Automated remediation or writes to source products.
 - Alerts, paging, notification routing, or incident management.
+- Steering case resolution, delegation policy, or workflow action invocation.
 - Full log aggregation or arbitrary stdout/stderr ingestion.
 - Distributed tracing infrastructure or an OpenTelemetry backend.
 - Metrics infrastructure such as Prometheus or Grafana.

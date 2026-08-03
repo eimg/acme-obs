@@ -11,6 +11,10 @@ Prelude HTTP API ----> Prelude adapter ----/
 
 The arrows are pull-only. Nothing in a source product points to `acme-obs`.
 
+Acme Steering is not a current source. If added later, it is another pull-only,
+allowlisted operational projection; Observability never resolves a Steering case,
+invokes a workflow action, or supplies decision authority.
+
 ## Components
 
 ### Source registry
