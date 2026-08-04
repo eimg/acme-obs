@@ -1,6 +1,6 @@
 # Acme Observability
 
-Acme Observability (`acme-obs`) is an optional, read-only view across the independent products in the Acme Software Factory. It answers what is running, what changed, where work stopped, and how related objects such as an issue, Helix run, pull request, and review connect.
+Acme Observability (`acme-obs`) is a cross-cutting, read-only view across the independent products in the Acme Software Factory. It answers what is running, what changed, where work stopped, and how related objects such as an issue, Helix run, pull request, and review connect.
 
 **Status:** first runnable observability slice. It includes the standalone SQLite projection, an at-a-glance dashboard, a deterministic sample workflow, and read-only adapters for current Helix, Acme Issues, Acme Projects, and Prelude public APIs.
 
@@ -12,14 +12,14 @@ Read [`PROJECT_SPEC.md`](./PROJECT_SPEC.md) for the accepted MVP, [`docs/decisio
 
 Acme Observability is:
 
-- optional: every observed product works normally when it is absent;
+- cross-cutting in the reference suite (the suite launcher starts it) while remaining conceptually detachable: every observed product works normally when the observer is absent or stopped;
 - read-only: it never triggers, approves, retries, merges, or mutates source products;
 - non-authoritative: source products remain the owners of their domain state;
 - derived and rebuildable: its SQLite database may be deleted and reconstructed;
 - adapter-based: integrations use HTTP contracts, never sibling source imports or private database reads;
-- operational: it presents activity, state transitions, failures, timing, and correlation.
+- operational: it presents activity, state transitions, failures, timing, and correlation (first-slice timelines and typed correlations; richer cost/bottleneck/chart analysis is later direction).
 
-It is not an intelligence or knowledge product. The MVP does not generate lessons, recommendations, summaries, embeddings, or Primer records. [Acme Intel](https://github.com/eimg/acme-intel) is the separate optional think-lab that may study allowlisted observations without changing Observability's read-only role.
+It is not an intelligence or knowledge product. The MVP does not generate lessons, recommendations, summaries, embeddings, or Primer records. [Acme Intel](https://github.com/eimg/acme-intel) is the separate think-lab that may study allowlisted observations without changing Observability's read-only role.
 
 ## Quick start
 
@@ -96,7 +96,7 @@ The first pass uses polling. The accepted later real-time direction is durable c
 
 ## Suite registration
 
-This checkout is an independent local Git repository, but it has no published remote or suite gitlink yet. After it is intentionally published, add it to the Acme root as a real Git submodule and then update the root product map. Do not commit it as ordinary root-repository content. The observer should remain optional even if the suite launcher later offers it as a selection.
+This repository is published as [`acme-obs`](https://github.com/eimg/acme-obs) and pinned from the Acme Software Factory root as a Git submodule. The suite launcher starts it on port `8322` as part of the composed reference experience. Keep the observer a submodule (never ordinary root-repository content). Architecturally it stays detachable and non-authoritative: sources do not call it, and they continue normally when it is stopped.
 
 ## Independence test
 

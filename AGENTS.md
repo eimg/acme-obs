@@ -1,8 +1,8 @@
 # Acme Observability agent guide
 
-This repository contains the first runnable slice of the optional Acme cross-product observability service.
+This repository contains the first runnable slice of the Acme cross-product observability service.
 
-Treat the Acme suite as an executable reference architecture, not a universal platform. Preserve Observability's optional local operation, focused ownership, and replaceable read-only seams; add breadth to demonstrate this responsibility, not to anticipate every organization's operations stack.
+Treat the Acme suite as an executable reference architecture, not a universal platform. Preserve Observability's detachable local operation, focused ownership, and replaceable read-only seams; add breadth to demonstrate this responsibility, not to anticipate every organization's operations stack. In the reference launcher the observer is part of the composed suite; “optional” means non-authority and independence, not a skip flag.
 
 ## Read first
 
