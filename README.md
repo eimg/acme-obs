@@ -19,7 +19,7 @@ Acme Observability is:
 - adapter-based: integrations use HTTP contracts, never sibling source imports or private database reads;
 - operational: it presents activity, state transitions, failures, timing, and correlation.
 
-It is not an intelligence or knowledge product. The MVP does not generate lessons, recommendations, summaries, embeddings, or Primer records.
+It is not an intelligence or knowledge product. The MVP does not generate lessons, recommendations, summaries, embeddings, or Primer records. [Acme Intel](https://github.com/eimg/acme-intel) is the separate optional think-lab that may study allowlisted observations without changing Observability's read-only role.
 
 ## Quick start
 

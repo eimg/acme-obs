@@ -144,7 +144,7 @@ Exact routes may follow the repository's implementation conventions, but UI and 
 
 ## 6. Explicit non-goals
 
-- Intelligence, learning, recommendations, or automatic lessons.
+- Intelligence, learning, recommendations, or automatic lessons (those belong to the separate Acme Intel product, not Observability).
 - Primer ingestion or query integration.
 - Embeddings, semantic search, or an LLM dependency.
 - Automated remediation or writes to source products.

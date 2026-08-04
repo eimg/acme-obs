@@ -15,7 +15,7 @@ These decisions are accepted for the MVP. A future implementation agent should e
 | Authority | Source products are authoritative |
 | Observer state | Derived, disposable, and rebuildable SQLite projection |
 | Writes to sources | Forbidden in the MVP |
-| Intelligence | Deferred entirely |
+| Intelligence | Out of Observability scope; Acme Intel is the separate optional think-lab that may pull allowlisted observations |
 | Primer | No MVP integration |
 | Acme Steering | No shipped adapter; a later adapter may project allowlisted operational facts but never provide decision or action authority |
 | Raw logs/transcripts | Not a general log collector; collect allowlisted domain observations only |

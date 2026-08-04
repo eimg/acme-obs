@@ -28,7 +28,7 @@ Do not reopen settled product choices unless implementation evidence makes one i
 - Treat the projection as privileged and suite-wide: require `observability.read`, `observability.collect`, or `observability.manage` as appropriate, but do not imply row-level source ACLs.
 - Allowlist collected fields. Do not ingest raw prompts, model transcripts, source code, secrets, authorization headers, or unrestricted tool output.
 - Preserve correlation and provenance without inventing a new shared workflow state machine.
-- No Primer, embeddings, LLM summarization, recommendation, anomaly intelligence, or write-back in the MVP.
+- No Primer, embeddings, LLM summarization, recommendation, anomaly intelligence, or write-back in the MVP. Acme Intel is the separate think-lab; Observability stays a read source, not a study product.
 - No Kafka, OpenTelemetry backend, distributed queue, or microservice split in the MVP.
 
 ## Ownership
@@ -39,6 +39,7 @@ Do not reopen settled product choices unless implementation evidence makes one i
 - Acme Projects owns exploratory cards, collaboration content, and implementation handoff links.
 - Prelude owns inceptions, working documents, bootstrap exports, and adoption state.
 - Acme Steering owns cases, decisions, delegation policy, escalation, and action-attempt authority. Observability has no current Steering adapter and must remain read-only if one is added.
+- Acme Intel may pull allowlisted Observability observations for study; Observability must not gain study, recommendation, or write-back responsibilities because Intel exists.
 - No observation can override or repair source state.
 
 ## Stack and structure
